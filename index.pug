@@ -1,0 +1,22 @@
+doctype html
+
+html
+	head
+		title Slow Reader
+		link(rel="stylesheet",type="text/css",href="stylesheet.css")
+		script(src="script.js")
+	body
+		div(class="ContainerPage",id="EntryContainer")
+			h1 Slow Reader
+			p Description
+			textarea(id="text")
+			p
+				input(type="checkbox",id="expand",checked)
+				label(for="expand") Expand contractions
+			button Start
+		div(class="ContainerPage",id="WordDisplay",style="display:none;")
+			h1(id="word") Word
+			button <
+			button back/reset/edit
+			button >
+
