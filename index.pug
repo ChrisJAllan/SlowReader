@@ -6,14 +6,15 @@ html
 		link(rel="stylesheet",type="text/css",href="stylesheet.css")
 		script(src="https://code.jquery.com/jquery-1.12.4.min.js")
 		script(src="script.js")
-	body
-		div(class="ContainerPage",id="EntryContainer",style="")
+	body(class="CenterContainer")
+		div(class="ContainerPage CenterContent",id="EntryContainer",style="")
 			h1 Slow Reader
 			p Description
 			textarea(id="text")
-			button(onclick="start_display()") Start
-		div(class="ContainerPage",id="WordDisplay",style="display:none;")
-			h1(id="word") Word
+			h1
+				button(onclick="start_display()") Start
+		div(class="ContainerPage CenterContent",id="WordDisplay",style="display:none;")
+			div(id="word") Word
 			button(id="back",onclick="prev_word()") <
 			button(onclick="show_editor()") back/reset/edit
 			button(id="fwd",onclick="next_word()") >
