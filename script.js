@@ -2,24 +2,24 @@ var words;
 var word_i;
 
 function show_editor() {
-	$("#EntryContainer").css('display', '');
-	$("#WordDisplay").css('display', 'none');
+	document.getElementById("EntryContainer").style.display = '';
+	document.getElementById("WordDisplay").style.display = 'none';
 }
 
 function show_words() {
-	$("#EntryContainer").css('display', 'none');
-	$("#WordDisplay").css('display', '');
+	document.getElementById("EntryContainer").style.display = 'none';
+	document.getElementById("WordDisplay").style.display = '';
 }
 
 function show_word() {
-	$("#word").text(words[word_i]);
+	document.getElementById("word").innerHTML = words[word_i];
 	
-	$("#back").prop('disabled', (word_i <= 0));
-	$("#fwd").prop('disabled', (word_i >= words.length - 1));
+	document.getElementById("back").disabled = (word_i <= 0);
+	document.getElementById("fwd").disabled = (word_i >= words.length - 1);
 }
 
 function start_display() {
-	words = $("#text").val().split(/\s+/g);
+	words = document.getElementById("text").value.split(/\s+/g);
 	word_i = 0;
 	
 	show_word();
