@@ -8,7 +8,9 @@ var HINTS_ARRAY = [
 	["their", "possesive"],
 	["there", "place"],
 	["hear", "sound"],
-	["here", "place"]
+	["here", "place"],
+	["lets", "he/she/it lets"],
+	["let's", "let us"]
 ];
 var HINTS_MAP = new Map(HINTS_ARRAY);
 

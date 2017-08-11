@@ -42,8 +42,8 @@ textarea {
 	height: 10em;
 }
 
-.ButtonGroup {
-	margin: .5em;
+.ButtonArea {
+	margin: 2em;
 }
 
 .ButtonGroup > button {
