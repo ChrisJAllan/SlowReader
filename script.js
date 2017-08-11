@@ -26,6 +26,9 @@ function show_word() {
 	var word = words[word_i];
 	document.getElementById("word").innerText = word;
 	
+	document.getElementById("back").disabled = (word_i <= 0);
+	document.getElementById("fwd").disabled = (word_i >= words.length - 1);
+	
 	var search_word = /[\w']+/.exec(word.toLowerCase())[0];
 	if (HINTS_MAP.has(search_word)) {
 		document.getElementById("hint").innerText = '(' + HINTS_MAP.get(search_word) + ')';
@@ -33,13 +36,12 @@ function show_word() {
 	else {
 		document.getElementById("hint").innerText = '';
 	}
-	
-	document.getElementById("back").disabled = (word_i <= 0);
-	document.getElementById("fwd").disabled = (word_i >= words.length - 1);
 }
 
 function start_display() {
-	words = document.getElementById("text").value.split(/\s+/g);
+	words = document.getElementById("text").value.split(/\s+/g).filter(function (word) {
+		return /\w/.test(word);
+	});
 	word_i = 0;
 	
 	show_word();
