@@ -7,6 +7,5 @@ GitHub Pages.
 ## TODO
 
 * Keyboard shortcuts
-* Word hints (contraction / homophone clarification)
 * What to name the back/reset button
 * Add description

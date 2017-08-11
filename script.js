@@ -1,6 +1,17 @@
 var words;
 var word_i;
 
+var HINTS_ARRAY = [
+	["its", "possesive"],
+	["it's", "it is"],
+	["they're", "they are"],
+	["their", "possesive"],
+	["there", "place"],
+	["hear", "sound"],
+	["here", "place"]
+];
+var HINTS_MAP = new Map(HINTS_ARRAY);
+
 function show_editor() {
 	document.getElementById("EntryContainer").style.display = '';
 	document.getElementById("WordDisplay").style.display = 'none';
@@ -12,7 +23,16 @@ function show_words() {
 }
 
 function show_word() {
-	document.getElementById("word").innerHTML = words[word_i];
+	var word = words[word_i];
+	document.getElementById("word").innerText = word;
+	
+	var search_word = /[\w']+/.exec(word.toLowerCase())[0];
+	if (HINTS_MAP.has(search_word)) {
+		document.getElementById("hint").innerText = '(' + HINTS_MAP.get(search_word) + ')';
+	}
+	else {
+		document.getElementById("hint").innerText = '';
+	}
 	
 	document.getElementById("back").disabled = (word_i <= 0);
 	document.getElementById("fwd").disabled = (word_i >= words.length - 1);

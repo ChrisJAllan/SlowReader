@@ -13,7 +13,9 @@ html
 			h1
 				button(onclick="start_display()") Start
 		div(class="ContainerPage CenterContent",id="WordDisplay",style="display:none;")
-			div(id="word") Word
+			div
+				span(id="word")
+				span(id="hint")
 			div(class="ButtonGroup")
 				button(id="back",onclick="prev_word()") <
 				button(onclick="show_editor()") back/reset/edit
