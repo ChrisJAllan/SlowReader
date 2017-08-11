@@ -1,6 +1,10 @@
 :root {
-	--button-blue: hsl(206, 100%, 36%);
-	--button-border: hsl(206, 100%, 30%);
+	--botton-primary:   white;
+	--button-secondary: hsl(206, 100%, 36%);
+	--button-border:    hsl(206, 100%, 30%);
+	--button-disabled-primary:   hsl(0, 0%, 80%);
+	--button-disabled-secondary: hsl(0, 0%, 50%);
+	--button-disabled-border:    hsl(0, 0%, 40%);
 }
 
 body {
@@ -14,8 +18,9 @@ button {
 	text-align: center;
 	text-decoration: none;
 	color: white;
+	color: var(--botton-primary);
 	background-color: #0069BD;
-	background-color: var(--button-blue);
+	background-color: var(--button-secondary);
 	
 	border: 0;
 	border-radius: 8px;
@@ -25,16 +30,19 @@ button {
 }
 
 button:hover:enabled {
-	background-color: #0069BD;
-	color: var(--button-blue);
+	color: #0069BD;
+	color: var(--button-secondary);
 	background-color: white;
+	background-color: var(--button-primary);
 	
 	box-shadow: 0px 3px 10px gray;
 }
 
 button:disabled {
-	background-color: gray;
 	color: lightgray;
+	color: var(--button-disabled-primary);
+	background-color: gray;
+	background-color: var(--button-disabled-secondary);
 }
 
 textarea {
@@ -47,19 +55,24 @@ textarea {
 }
 
 .ButtonGroup > button {
-	border: 0 solid var(--button-border);
+	border: 0 solid #000;
+	border-color: var(--button-border);
 	border-radius: 0;
 	border-width: 0 1px 0 1px;
 }
 
+.ButtonGroup > button:disabled {
+	border-color: var(--button-disabled-border);
+}
+
 .ButtonGroup > button:first-child {
 	border-radius: 8px 0 0 8px;
-	border-width: 0;
+	border-width: 0 1px 0 0;
 }
 
 .ButtonGroup > button:last-child {
 	border-radius: 0 8px 8px 0;
-	border-width: 0;
+	border-width: 0 0 0 1px;
 }
 
 .CenterContainer {

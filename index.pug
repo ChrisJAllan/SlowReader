@@ -6,18 +6,19 @@ html
 		link(rel="stylesheet",type="text/css",href="stylesheet.css")
 		script(src="script.js")
 	body(class="CenterContainer")
-		div(class="ContainerPage CenterContent",id="EntryContainer",style="")
+		div(class="ContainerPage CenterContent",id="EntryContainer")
 			h1 Slow Reader
 			p Description
-			textarea(id="text")
-			div(class="ButtonArea")
-				button(onclick="start_display()") Start
+			textarea(id="text",oninput="check_input()")
+			div(class="ButtonArea ButtonGroup")
+				button(onclick="start_display(false)",id="start",disabled) Start
+				button(onclick="start_display(true)",id="resume",disabled,autocomplete="off") Resume
 		div(class="ContainerPage CenterContent",id="WordDisplay",style="display:none;")
 			div
 				span(id="word")
 				span(id="hint")
 			div(class="ButtonArea ButtonGroup")
 				button(id="back",onclick="prev_word()") <
-				button(onclick="show_editor()") back/reset/edit
+				button(onclick="show_editor()") Back
 				button(id="fwd",onclick="next_word()") >
 

@@ -1,5 +1,5 @@
 var words;
-var word_i;
+var word_i = 0;
 
 var HINTS_ARRAY = [
 	["its", "possesive"],
@@ -14,40 +14,58 @@ var HINTS_ARRAY = [
 ];
 var HINTS_MAP = new Map(HINTS_ARRAY);
 
+function get_element(id) {
+	return document.getElementById(id);
+}
+
 function show_editor() {
-	document.getElementById("EntryContainer").style.display = '';
-	document.getElementById("WordDisplay").style.display = 'none';
+	get_element("EntryContainer").style.display = '';
+	get_element("WordDisplay").style.display = 'none';
 }
 
 function show_words() {
-	document.getElementById("EntryContainer").style.display = 'none';
-	document.getElementById("WordDisplay").style.display = '';
+	get_element("EntryContainer").style.display = 'none';
+	get_element("WordDisplay").style.display = '';
 }
 
 function show_word() {
 	var word = words[word_i];
-	document.getElementById("word").innerText = word;
+	get_element("word").innerText = word;
 	
-	document.getElementById("back").disabled = (word_i <= 0);
-	document.getElementById("fwd").disabled = (word_i >= words.length - 1);
+	get_element("back").disabled = (word_i <= 0);
+	get_element("fwd").disabled = (word_i >= words.length - 1);
 	
 	var search_word = /[\w']+/.exec(word.toLowerCase())[0];
 	if (HINTS_MAP.has(search_word)) {
-		document.getElementById("hint").innerText = '(' + HINTS_MAP.get(search_word) + ')';
+		get_element("hint").innerText = '(' + HINTS_MAP.get(search_word) + ')';
 	}
 	else {
-		document.getElementById("hint").innerText = '';
+		get_element("hint").innerText = '';
 	}
 }
 
-function start_display() {
-	words = document.getElementById("text").value.split(/\s+/g).filter(function (word) {
-		return /\w/.test(word);
-	});
-	word_i = 0;
+function start_display(resume) {
+	if (!words) {
+		check_input();
+	}
 	
+	if (!resume) {
+		word_i = 0;
+	}
+
 	show_word();
 	show_words();
+
+	document.getElementById("resume").disabled = false;
+}
+
+function check_input() {
+	words = get_element("text").value.split(/\s+/g).filter(function (word) {
+		return /\w/.test(word);
+	});
+	
+	get_element("start").disabled = (words.length == 0);
+	get_element("resume").disabled = !(words.length > word_i && word_i != 0);
 }
 
 function next_word() {
