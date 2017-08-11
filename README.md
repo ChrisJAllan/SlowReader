@@ -7,5 +7,4 @@ GitHub Pages.
 ## TODO
 
 * Keyboard shortcuts
-* What to name the back/reset button
-* Add description
+
